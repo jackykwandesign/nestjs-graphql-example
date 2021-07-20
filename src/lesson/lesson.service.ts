@@ -21,13 +21,13 @@ export class LessonService {
     }
 
     async lessonCreate(lessonCreateInput:lessonCreateInput):Promise<Lesson>{
-        const { name, startDate, endDate, students } = lessonCreateInput
+        const { name, startDate, endDate, studentIds } = lessonCreateInput
         const lesson = this.lessonRepository.create({
             id:uuid(),
             name,
             startDate,
             endDate,
-            students
+            studentIds
         })
         return this.lessonRepository.save(lesson)
     }
@@ -37,7 +37,7 @@ export class LessonService {
         const lesson = await this.lessonRepository.findOne({
             id:lessonId
         })
-        lesson.students = [...lesson.students, ...studentIds]
+        lesson.studentIds = [...lesson.studentIds, ...studentIds]
         return this.lessonRepository.save(lesson)
     }
 }

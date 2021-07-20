@@ -18,7 +18,7 @@ export class Lesson {
     endDate:string
 
     @Column()
-    students:string[]
+    studentIds:string[]
 
     constructor(data?: Partial<Lesson>) {
         Object.assign(this, data);

@@ -44,6 +44,6 @@ export class LessonResolver{
 
     @ResolveField()
     async students(@Parent() lesson:Lesson){
-        return this.studentService.studentGetByIds(lesson.students)
+        return this.studentService.studentGetByIds(lesson.studentIds)
     }
 }
