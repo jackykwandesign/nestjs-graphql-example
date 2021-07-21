@@ -16,6 +16,18 @@ export class LessonService {
         return this.lessonRepository.findOne({id})
     }
 
+    async lessonsGetByStudentId(studentId: string):Promise<Lesson[]>{
+        return this.lessonRepository.find({
+            where:{
+                studentIds:{
+                    $elemMatch:{
+                        $eq:studentId
+                    }
+                }
+            }
+        })
+    }
+
     async lessonGetAll():Promise<Lesson[]>{
         return this.lessonRepository.find()
     }
@@ -37,7 +49,7 @@ export class LessonService {
         const lesson = await this.lessonRepository.findOne({
             id:lessonId
         })
-        lesson.studentIds = [...lesson.studentIds, ...studentIds]
+        lesson.studentIds = [... new Set([...lesson.studentIds, ...studentIds])]
         return this.lessonRepository.save(lesson)
     }
 }
