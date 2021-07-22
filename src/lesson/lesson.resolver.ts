@@ -1,7 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
 import { StudentService } from "../student/student.service";
 import { LessonAssignToStudentsInput } from "./dto/lesson-asign-to-students.input";
-import { lessonCreateInput } from "./dto/lesson-create.input";
+import { LessonCreateInput } from "./dto/lesson-create.input";
 import { Lesson } from "./lesson.entity";
 import { LessonService } from "./lesson.service";
 import { LessonType } from "./lesson.type";
@@ -30,7 +30,7 @@ export class LessonResolver{
 
     @Mutation(returns => LessonType)
     lessonCreate(
-        @Args('lessonCreateInput') lessonCreateInput:lessonCreateInput
+        @Args('lessonCreateInput') lessonCreateInput:LessonCreateInput
     ){
         return this.lessonService.lessonCreate(lessonCreateInput)
     }

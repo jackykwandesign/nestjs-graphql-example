@@ -14,4 +14,5 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
         __dirname + '/../**/*.entity{.ts,.js}',
     ],
     useUnifiedTopology:true,
+    useNewUrlParser:true
 }

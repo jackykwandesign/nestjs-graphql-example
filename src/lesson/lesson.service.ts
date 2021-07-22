@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository, Repository } from 'typeorm';
 import { Lesson } from './lesson.entity';
 import { v4 as uuid } from 'uuid'
-import { lessonCreateInput } from './dto/lesson-create.input';
+import { LessonCreateInput } from './dto/lesson-create.input';
 import { LessonAssignToStudentsInput } from './dto/lesson-asign-to-students.input';
 @Injectable()
 export class LessonService {
@@ -32,7 +32,7 @@ export class LessonService {
         return this.lessonRepository.find()
     }
 
-    async lessonCreate(lessonCreateInput:lessonCreateInput):Promise<Lesson>{
+    async lessonCreate(lessonCreateInput:LessonCreateInput):Promise<Lesson>{
         const { name, startDate, endDate, studentIds } = lessonCreateInput
         const lesson = this.lessonRepository.create({
             id:uuid(),

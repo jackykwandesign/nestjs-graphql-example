@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './config/typeorm.config';
 import { LessonModule } from './lesson/lesson.module';
 import { StudentModule } from './student/student.module';
+import { MainTopicModule } from './main-topic/main-topic.module';
+import { join } from 'path';
+import { CommonModule } from './common/common.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -13,11 +16,14 @@ import { StudentModule } from './student/student.module';
     TypeOrmModule.forRoot(typeOrmConfig),
     GraphQLModule.forRoot({
       autoSchemaFile:true,
+      // autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       // debug: false,
       // playground: false,
     }),
     LessonModule,
-    StudentModule
+    StudentModule,
+    MainTopicModule,
+    CommonModule
   ],
 })
 export class AppModule {}
