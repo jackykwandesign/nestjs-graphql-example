@@ -29,10 +29,10 @@ export class MainTopicService {
         const {subject, studyYear, name, subTopics:subTopicInputs} = mainTopicCreateInput
         let subTopics:SubTopic[] = []
         for(const subTopicInput of subTopicInputs){
-            subTopics.push({
+            subTopics.push(new SubTopic({
                 id:uuid(),
                 name:subTopicInput.name,    
-            })
+            }))
         }   
         const newMainTopic = new MainTopic({
             id: uuid(),
