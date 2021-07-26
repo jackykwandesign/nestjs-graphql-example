@@ -1,8 +1,20 @@
 
+import { Type } from 'class-transformer';
+import { IsNotEmptyObject, ValidateNested } from 'class-validator';
 import { LocaleString } from 'src/common/locale-string/locale-string';
 import { Entity, ObjectIdColumn, Column, CreateDateColumn, ObjectID, PrimaryColumn } from 'typeorm';
 // import { LocaleString } from '../config/locale-string/localeString';
 
+export class SubTopic {
+  
+  id:string
+
+  name:LocaleString
+
+  // constructor(data?: Partial<SubTopic>) {
+  //   Object.assign(this, data);
+  // }
+}
 
 @Entity()
 export class MainTopic {
@@ -18,6 +30,9 @@ export class MainTopic {
   
   @Column()
   subject:string
+
+  @Column()
+  subTopics:SubTopic[]
 
   @Column()
   orderSequence: number

@@ -28,5 +28,12 @@ export class MainTopicResolver {
     ){
         return this.mainTopicService.mainTopicCreate(mainTopicCreateInput)
     }
+
+    @Mutation(returns => MainTopicType)
+    mainTopicDeleteById(
+        @Args('id') id:string
+    ){
+        return this.mainTopicService.mainTopicDeleteById(id)
+    }
 }
 
