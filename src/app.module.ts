@@ -8,6 +8,8 @@ import { StudentModule } from './student/student.module';
 import { MainTopicModule } from './main-topic/main-topic.module';
 import { join } from 'path';
 import { CommonModule } from './common/common.module';
+import { TagModule } from './tag/tag.module';
+import { QuestionModule } from './question/question.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -17,13 +19,15 @@ import { CommonModule } from './common/common.module';
     GraphQLModule.forRoot({
       autoSchemaFile:true,
       // autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      // debug: false,
+      debug: false,
       // playground: false,
     }),
-    LessonModule,
-    StudentModule,
+    // LessonModule,
+    // StudentModule,
     MainTopicModule,
-    CommonModule
+    CommonModule,
+    TagModule,
+    QuestionModule
   ],
 })
 export class AppModule {}

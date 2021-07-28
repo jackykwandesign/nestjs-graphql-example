@@ -31,12 +31,12 @@ export class StudentService {
 
     async studentCreate(studentCreateInput:StudentCreateInput):Promise<Student>{
         const { firstName, lastName } = studentCreateInput
-        const student = new Student({
+        const newStudent = new Student({
             id:uuid(),
             firstName,
             lastName
         })
-        return this.studentRepository.save(student)
+        return this.studentRepository.save(newStudent)
     }
 
 }

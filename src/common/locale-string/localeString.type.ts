@@ -3,7 +3,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 @ObjectType('LocaleString')
 export class LocaleStringType {
 
-  @Field()
+  @Field({nullable:true})
   en?: string
 
   @Field({nullable:true})
